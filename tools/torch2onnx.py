@@ -42,7 +42,7 @@ def main():
     os.makedirs(args.work_dir, exist_ok=True)
     # load deploy_cfg
     deploy_cfg = load_config(args.deploy_cfg)[0]
-    save_file = get_ir_config(deploy_cfg)['save_file']
+    save_file = osp.splitext(osp.basename(args.model_cfg))[0]+".onnx"#get_ir_config(deploy_cfg)['save_file']
 
     torch2onnx(
         args.img,
